@@ -1,0 +1,70 @@
+<div class="mycontainer">
+<form #login="ngForm"(ngSubmit) ="Submit(login)" >
+  <h2 style="text-align:center"> Empolyee Details </h2>
+  <br>
+   <div>
+    <label>Empolyee Name</label>
+    <input #name="ngModel" type="text" id="name" name="name" placeholder="Enter your full name" class="form-control"
+    required minlength="4" pattern="^[A-Za-z ]{4,29}$" ngModel>
+<br>
+<span *ngIf="name.invalid && (name.dirty || name.touched)"
+  class="alert">
+  Enter a valid Name.
+</span>
+</div>
+  <div>
+    <label>Email</label>
+    <br>
+    <input #email="ngModel" type="email" id="email" name="email" class="form-control" required minlength="4" placeholder="Enter your Email Address" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"  ngModel>
+    <br>
+    <span *ngIf="email.invalid && (email.dirty || email.touched)"class="alert">
+        Enter a valid email.
+    </span>
+  </div>
+<div>
+    <label>Age</label>
+    <br>
+    <input #age="ngModel" type="Number" id="age1" name="age1" placeholder="Enter your Age" class="form-control" required ngModel/>
+    <br>
+    <span *ngIf="((age.value<10 || age.value>61) && age.touched)"class="alert">
+      Enter a valid age
+    </span>
+  </div>
+<div>
+    <label>Salary</label>
+    <br>
+    <input #Salary="ngModel" placeholder="Enter your Salary" type="Number" id="salary" name="salary" min="10000" class="form-control" required ngModel/>
+    <br>
+    <!--<span *ngIf="(Salary.value<10000 && Salary.touched)"class="alert">Salary should be above 10000.</span>-->
+    <span  class="alert" *ngIf="!Salary.valid && Salary.touched && (Salary.errors?.['min'] || !Salary.errors?.['min'])" class="error" >Should be above 10,000</span>
+  </div>
+<div>
+    <label>PanNumber</label>
+    <br>
+    <input #PanNumber="ngModel" placeholder="Enter your PanNumber" type="text" id="PanNumber" name="PanNumber" class="form-control"
+    required  pattern="[A-Z]{5}[0-9]{4}[A-Z]{1}" ngModel>
+    <br>
+<span *ngIf="PanNumber.invalid && (PanNumber.dirty || PanNumber.touched)"
+  class="alert">
+  Enter a valid PanNumber.
+</span>
+  </div>
+<div>
+    <label>Aadhar Number</label>
+    
+    <input #aadharNumber="ngModel" type="text" placeholder="Enter your aadharNumber" id="aadharnumber" name="aadharnumber" class="form-control"
+    required minlength="12" maxlength="12"  ngModel>
+
+<span *ngIf="aadharNumber.invalid && (aadharNumber.dirty || aadharNumber.touched)"
+  class="alert">
+  Enter a valid Aadhar Number.
+</span>
+  </div>
+<div>
+  <br>
+    <button type="submit"value="Submit" [disabled]="login.form.invalid" class="btn btn-primary"  >Submit</button>
+    <button  type="reset"value="clear Form"class="btn btn-primary">clear</button>
+</div>
+  
+</form>
+</div>
